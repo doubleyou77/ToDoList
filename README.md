@@ -6,5 +6,5 @@ express
 mongodb
 
 ### 실행 방법
-> npm install
+> npm install  
 > npm start
