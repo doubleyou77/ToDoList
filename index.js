@@ -30,6 +30,8 @@ MongoClient.connect(uri, (err, database) => {
   }
 });
 
+
+// Read
 app.get('/', (req, res) => {
   data.find()
       .toArray()
@@ -42,6 +44,7 @@ app.get('/', (req, res) => {
       })
 });
 
+// Create
 app.post('/upload', (req, res) => {
     const content = req.body.content;
     let date = new Date();
@@ -57,6 +60,7 @@ app.post('/upload', (req, res) => {
         });
 });
 
+// Read
 app.get('/edit/:id', (req, res) => {
   let id = req.params.id;
 
@@ -66,6 +70,7 @@ app.get('/edit/:id', (req, res) => {
       });
 });
 
+// Update
 app.post('/edit', (req, res) => {
   const { id, content } = req.body;
   let date = new Date();
@@ -88,6 +93,7 @@ app.post('/edit', (req, res) => {
       })
 });
 
+// Delete
 app.get('/delete/:id', (req, res) => {
   let id = req.params.id;
   
