@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDoList</title>
+</head>
+<body>
+  <form action="/upload" method="post">
+    <textarea name="content"></textarea>
+    <button type="submit">제출</button>
+  </form>
+
+  <ul>
+    <% for(let i = 0; i < data.length; i++) { %>
+      <li>
+        <%= data[i].content %>
+        <%= data[i].date %>
+        <form method="get">
+          <button type="submit" onclick="javascript: form.action='/edit/<%=data[i]._id %>'" >수정하기</button>
+          <button type="submit" onclick="javascript: form.action='/delete/<%=data[i]._id %>'">삭제하기</button>
+        </form>
+      </li>
+    <% } %>
+  </ul>
+</body>
+</html>
