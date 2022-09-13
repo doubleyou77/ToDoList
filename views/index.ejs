@@ -5,24 +5,44 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ToDoList</title>
+  <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
-  <form action="/upload" method="post">
-    <textarea name="content" cols="50" rows="10"></textarea>
-    <button type="submit">제출</button>
-  </form>
-
+  <div class="input-container">
+    <form class="main-form" action="/upload" method="post">
+      <textarea id="input" name="content" cols="50" rows="10" placeholder="입력해주세요"></textarea>
+      <button class="submit-btn" type="submit">제출</button>
+    </form>
+  </div>
+  <div class="edit">
   <ul>
     <% for(let i = 0; i < data.length; i++) { %>
       <li>
         <%= data[i].content %>
         <%= data[i].date %>
+        <div class ="susac">
         <form method="get">
-          <button type="submit" onclick="javascript: form.action='/edit/<%=data[i]._id %>'" >수정하기</button>
-          <button type="submit" onclick="javascript: form.action='/delete/<%=data[i]._id %>'">삭제하기</button>
+          <button class="susac-btn" type="submit" onclick="javascript: form.action='/edit/<%=data[i]._id %>'" >수정하기</button>
+          <button class="susac-btn" type="submit" onclick="javascript: form.action='/delete/<%=data[i]._id %>'">삭제하기</button>
         </form>
+      </div>
       </li>
     <% } %>
   </ul>
+  </div>
+  <script>
+    let input = document.getElementById("input");
+
+    // Execute a function when the user presses a key on the keyboard
+    input.addEventListener("keypress", function(event) {
+      // If the user presses the "Enter" key on the keyboard
+      if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        document.querySelector('.submit-btn').click();
+      }
+    });
+  </script>
 </body>
 </html>

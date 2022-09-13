@@ -75,9 +75,9 @@ app.post('/edit', (req, res) => {
   const { id, content } = req.body;
   let date = new Date();
   date = date.toLocaleString();
-
+  
   data.updateOne(
-        { _id: ObjectId(id) },
+        { _id : ObjectId(id) },
         { $set: {
             content,
             date
@@ -97,7 +97,7 @@ app.post('/edit', (req, res) => {
 app.get('/delete/:id', (req, res) => {
   let id = req.params.id;
   
-  data.deleteOne( { "_id" : ObjectId(id) } )
+  data.deleteOne( { _id : ObjectId(id) } )
       .then(() => {
         res.redirect('/');
       })
